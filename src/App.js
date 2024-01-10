@@ -1,18 +1,39 @@
 import "./App.css";
 import { FaChevronDown } from "react-icons/fa";
+import { HiMenu } from "react-icons/hi";
 import { navItems } from "./utils/constants";
+import { useEffect, useState } from "react";
 
 function App() {
   const startIndex = 10;
   const endIndex = 18;
+  const [isSidebarMenuOpen, setIsSideBarMenuOpen] = useState(false);
+
+  const handleOutsideClick = (event) => {
+    if (isSidebarMenuOpen && event.target.closest(".aside") === null) {
+      setIsSideBarMenuOpen(!isSidebarMenuOpen);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+    // eslint-disable-next-line
+  }, [isSidebarMenuOpen]);
+
+  function sidebarMenuHandler() {
+    console.log("here");
+    setIsSideBarMenuOpen(true);
+  }
+
+  console.log(isSidebarMenuOpen);
+
   return (
     <div className="main">
-      <div className="mobile-device-warning">
-        <h1>
-          This website is Desktop View only. Please switch to desktop mode.
-        </h1>
-      </div>
-      <aside>
+      <aside className={`aside ${isSidebarMenuOpen ? "show" : ""}`}>
         <div className="sidebar">
           <div className="store">
             <div className="store-logo">
@@ -72,6 +93,12 @@ function App() {
       </aside>
       <section className="payments">
         <div className="header">
+          <div
+            onClick={() => sidebarMenuHandler()}
+            className="header-responsive-hamburger-menu"
+          >
+            <HiMenu className="header-responsive-hamburger-menu-icon" />
+          </div>
           <div className="header-title">
             <div className="header-title-text">Payments</div>
             <div className="header-help-btn">

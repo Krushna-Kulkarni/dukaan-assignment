@@ -26,9 +26,10 @@ body {
   background-color: white;
 }
 .main {
+  position: relative;
   display: flex;
 }
-aside {
+.aside {
   position: sticky;
   inset: 0;
   width: 224px;
@@ -182,6 +183,10 @@ a {
   background-color: white;
   padding: 10px 30px;
   border-bottom: 1px solid var(--gray-300);
+}
+
+.header-responsive-hamburger-menu {
+  display: none;
 }
 
 .header-title {
@@ -364,7 +369,7 @@ a {
   align-items: center;
   border: 2px solid var(--gray-200);
   width: 25%;
-  padding: 10px 10px;
+  padding: 8px 8px;
   border-radius: 5px;
 }
 
@@ -482,6 +487,8 @@ td:nth-child(4) {
 }
 
 .page-btn {
+  min-width: 30px;
+  min-height: 30px;
   color: var(--gray-600);
   border: none;
   border-radius: 5px;
@@ -501,11 +508,6 @@ td:nth-child(4) {
   background-color: var(--blue-600);
 }
 
-.page-btn .active {
-  border: 1px solid var(--gray-800);
-  background-color: var(--blue-600);
-}
-
 .page-btn-skip {
   cursor: pointer;
   font-size: 14px;
@@ -521,18 +523,87 @@ td:nth-child(4) {
   background-color: white;
 }
 
+.page-btn-skip:hover svg {
+  stroke: white;
+}
+.page-btn-skip:hover svg > path {
+  fill: white;
+}
+
 .mobile-device-warning {
   display: none;
 }
 
 @media (max-width: 800px) {
-  aside,
-  .payments {
+  .aside {
     display: none;
   }
-  .mobile-device-warning {
-    display: block;
+
+  .payments {
     width: 100dvw;
-    height: 100dvh;
+  }
+
+  .header {
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-x: scroll;
+  }
+  .header-responsive-hamburger-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .aside.show {
+    height: 100%;
+    display: flex;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .header-responsive-hamburger-menu-icon {
+    height: 30px;
+    width: 30px;
+    color: var(--gray-600);
+    margin: 5px 5px;
+  }
+
+  .search-container {
+    width: 200px;
+  }
+
+  .header-action-btns {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .header-help-btn-icon {
+    display: flex;
+    align-items: center;
+    width: 12px;
+    margin-right: 8px;
+  }
+
+  .header-help-btn-text {
+    display: none;
+  }
+
+  .overview-content {
+    /* overflow-x: scroll; */
+    flex-wrap: wrap;
+  }
+
+  .overview-orders,
+  .overview-amount {
+    width: auto;
+  }
+
+  .transactions-table-wrapper {
+    overflow-x: scroll;
+  }
+
+  .transactions-search-bar {
+    width: 50%;
   }
 }
