@@ -89,6 +89,10 @@ a {
   fill: white;
 }
 
+li {
+  list-style: none;
+}
+
 .store-nav-items {
   padding: 1px 4px;
 }
@@ -321,7 +325,7 @@ a {
 
 .overview-orders,
 .overview-amount {
-  width: 50%;
+  width: 100%;
   background-color: white;
   padding: 20px 20px;
   display: flex;
@@ -465,6 +469,10 @@ td:nth-child(4) {
 }
 
 /* Pagination */
+button {
+  padding-block: 0;
+  padding-inline: 0px;
+}
 
 .pagination-wrapper {
   display: flex;
@@ -556,9 +564,9 @@ td:nth-child(4) {
   }
 
   .aside.show {
-    height: 100%;
+    height: 100dvh;
     display: flex;
-    position: absolute;
+    position: fixed;
     z-index: 2;
   }
 
@@ -594,16 +602,17 @@ td:nth-child(4) {
     flex-wrap: wrap;
   }
 
-  .overview-orders,
-  .overview-amount {
-    width: auto;
-  }
-
   .transactions-table-wrapper {
     overflow-x: scroll;
   }
 
   .transactions-search-bar {
     width: 50%;
+  }
+}
+/* iPhone Portrait */
+@media screen and (max-device-width: 480px) {
+  .credits {
+    margin-top: auto;
   }
 }
